@@ -14,6 +14,23 @@ class App extends React.Component {
     });
   };
 
+  toggleMyList = (props) => {
+    console.log(props.movie);
+    if (this.state.myList.includes(props.movie.id)) {
+      this.setState((prevState) => ({
+        myList: prevState.myList.filter(
+          (likedMovie) => likedMovie !== props.movie.id
+        ),
+      }));
+      MovieAPI.removeFromList(props.movie);
+    } else {
+      this.setState((prevState) => ({
+        myList: [...prevState.myList, props.movie.id],
+      }));
+      MovieAPI.addToList(props.movie);
+    }
+  };
+
   render = () => {
     return (
       <>
@@ -45,7 +62,12 @@ class App extends React.Component {
             <h1>Action</h1>
             <div class="titles-wrapper">
               {this.state.movies.map((movie) => (
-                <Movie movie={movie} />
+                <Movie
+                  movie={movie}
+                  key={movie.id}
+                  toggled={this.state.myList.includes(movie.id)}
+                  toggleMyList={this.toggleMyList}
+                />
               ))}
               {/* <div class="movie">
                 <img src="https://image.tmdb.org/t/p/w500/6FfCtAuVAW8XJjZ7eWeLibRLWTw.jpg" />
