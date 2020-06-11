@@ -43,7 +43,12 @@ class App extends React.Component {
             <nav>
               <ul>
                 <li>
-                  <Link to="/mylist">My List</Link>
+                  <Switch>
+                    <Route exact path="./mylist">
+                      <Mylist />
+                      <Link to="/mylist">My List</Link>
+                    </Route>
+                  </Switch>
                 </li>
               </ul>
             </nav>
