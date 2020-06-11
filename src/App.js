@@ -1,13 +1,13 @@
 import React from "react";
 import Movie from "./Movie";
 import MyList from "./MyList";
+import Search from "./Search";
 import * as MovieAPI from "./MovieAPI";
 import { Switch, Route, Link } from "react-router-dom";
 
 class App extends React.Component {
   state = {
     movies: [],
-    myList: [],
     genres: [],
   };
 
@@ -18,7 +18,6 @@ class App extends React.Component {
   };
 
   toggleMyList = (props) => {
-    console.log(props.movie.my_list);
     if (props.movie.my_list) {
       MovieAPI.removeFromList(props.movie);
     } else {
@@ -32,8 +31,6 @@ class App extends React.Component {
   render = () => {
     return (
       <>
-        {/* <Switch>
-          <Route exact path="/"> */}
         <header className="header">
           <a href="/">
             <img
@@ -51,13 +48,9 @@ class App extends React.Component {
               </ul>
             </nav>
           </div>
-          <form id="search" className="search">
-            <input type="search" placeholder="Search for a title..." value="" />
-            <div className="searchResults"></div>
-          </form>
+
+          <Search />
         </header>
-        {/* </Route>
-        </Switch> */}
 
         <div className="titleList">
           <div className="title">
