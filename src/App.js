@@ -3,6 +3,7 @@ import Movie from "./Movie";
 import Header from "./Header";
 import * as MovieAPI from "./MovieAPI";
 import { Switch, Route, Link } from "react-router-dom";
+import Genre from "./Genre";
 
 class App extends React.Component {
   state = {
@@ -65,21 +66,16 @@ class App extends React.Component {
 
           <Switch>
             <Route exact path="/">
-              <div className="titleList">
-                <div className="title">
-                  <h1>Action</h1>
-                  <div className="titles-wrapper">
-                    {this.state.movies.map((movie) => (
-                      <Movie
-                        movie={movie}
-                        key={movie.id}
-                        toggled={movie.my_list}
-                        toggleMyList={this.toggleMyList}
-                      />
-                    ))}
-                  </div>
-                </div>
-              </div>
+              {this.state.genres.map((genre) => (
+                <Genre
+                  genre={genre.name}
+                  movies={this.state.movies.filter((movie) =>
+                    movie.genre_ids.includes(genre.id)
+                  )}
+                  toggleMyList={this.toggleMyList}
+                  key={genre.id}
+                />
+              ))}
             </Route>
             <Route exact path="/mylist">
               <div className="titleList">
