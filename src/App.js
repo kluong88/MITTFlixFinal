@@ -3,7 +3,7 @@ import Movie from "./Movie";
 import Header from "./Header";
 import * as MovieAPI from "./MovieAPI";
 import Genre from "./Genre";
-import { Switch, Route, Link } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 
 class App extends React.Component {
   state = {
@@ -13,8 +13,6 @@ class App extends React.Component {
   };
 
   componentDidMount = () => {
-    const sortedMap = [];
-
     MovieAPI.getAll().then((movies) => {
       this.setState({ movies });
     });
@@ -47,8 +45,10 @@ class App extends React.Component {
   };
 
   filterResults = (query) => {
-    const filteredList = this.state.movies.filter((movie) =>
-      movie.title.toLowerCase().includes(query.toLowerCase())
+    const filteredList = this.state.movies.filter(
+      (movie) =>
+        movie.title.toLowerCase().includes(query.toLowerCase()) ||
+        movie.overview.toLowerCase().includes(query.toLowerCase())
     );
     if (query !== "") {
       this.setState({ movies: filteredList });
@@ -68,7 +68,7 @@ class App extends React.Component {
           <Header
             value={this.state.searchField}
             updateSearchField={this.updateSearchField}
-            results={this.state.searchField}
+            results={this.state.movies.length}
           />
           <Switch>
             <Route exact path="/">

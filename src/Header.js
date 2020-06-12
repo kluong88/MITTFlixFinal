@@ -26,7 +26,11 @@ export default function Header(props) {
           type="search"
           placeholder="Search for a title..."
         />
-        <div className="searchResults"></div>
+        <div className="searchResults">
+          {props.results === 100
+            ? ""
+            : `Found ${props.results} movies with the query "${props.value}".`}
+        </div>
       </form>
     </header>
   );

@@ -2,8 +2,6 @@ import React from "react";
 import Movie from "./Movie";
 
 export default function Genre(props) {
-  console.log(props.movies.length);
-
   if (props.movies.length > 0) {
     return (
       <div className="titleList">
