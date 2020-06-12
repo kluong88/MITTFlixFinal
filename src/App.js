@@ -2,8 +2,8 @@ import React from "react";
 import Movie from "./Movie";
 import Header from "./Header";
 import * as MovieAPI from "./MovieAPI";
-import { Switch, Route, Link } from "react-router-dom";
 import Genre from "./Genre";
+import { Switch, Route, Link } from "react-router-dom";
 
 class App extends React.Component {
   state = {
@@ -13,12 +13,19 @@ class App extends React.Component {
   };
 
   componentDidMount = () => {
+    const sortedMap = [];
+
     MovieAPI.getAll().then((movies) => {
       this.setState({ movies });
     });
 
     MovieAPI.genres().then((genres) => {
-      this.setState({ genres });
+      const sortedGenres = genres.sort(function (a, b) {
+        let genreA = a.name.toLowerCase();
+        let genreB = b.name.toLowerCase();
+        return genreA < genreB ? -1 : genreA > genreB ? 1 : 0;
+      });
+      this.setState({ genres: sortedGenres });
     });
   };
 
@@ -63,7 +70,6 @@ class App extends React.Component {
             updateSearchField={this.updateSearchField}
             results={this.state.searchField}
           />
-
           <Switch>
             <Route exact path="/">
               {this.state.genres.map((genre) => (
