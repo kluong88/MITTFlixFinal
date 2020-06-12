@@ -33,21 +33,21 @@ class App extends React.Component {
   };
 
   updateSearchField = (e) => {
-    this.setState({ searchField: e.target.value });
-    this.filterResults(this.state.searchField);
+    this.setState({ searchField: e.target.value }, () => {
+      this.filterResults(this.state.searchField);
+    });
   };
 
   filterResults = (query) => {
     const filteredList = this.state.movies.filter((movie) =>
       movie.title.toLowerCase().includes(query.toLowerCase())
     );
-    if (filteredList.length === 0) {
+    if (query !== "") {
+      this.setState({ movies: filteredList });
+    } else {
       MovieAPI.getAll().then((movies) => {
         this.setState({ movies });
       });
-    } else {
-      console.log(filteredList);
-      this.setState({ movies: filteredList });
     }
   };
 
