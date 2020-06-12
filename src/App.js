@@ -1,7 +1,6 @@
 import React from "react";
 import Movie from "./Movie";
-import MyList from "./MyList";
-import Search from "./Search";
+import Header from "./Header";
 import * as MovieAPI from "./MovieAPI";
 import { Switch, Route, Link } from "react-router-dom";
 
@@ -9,11 +8,16 @@ class App extends React.Component {
   state = {
     movies: [],
     genres: [],
+    searchField: "",
   };
 
   componentDidMount = () => {
     MovieAPI.getAll().then((movies) => {
       this.setState({ movies });
+    });
+
+    MovieAPI.genres().then((genres) => {
+      this.setState({ genres });
     });
   };
 
@@ -28,50 +32,74 @@ class App extends React.Component {
     });
   };
 
+  updateSearchField = (e) => {
+    this.setState({ searchField: e.target.value });
+    this.filterResults(this.state.searchField);
+  };
+
+  filterResults = (query) => {
+    const filteredList = this.state.movies.filter((movie) =>
+      movie.title.toLowerCase().includes(query.toLowerCase())
+    );
+    if (filteredList.length === 0) {
+      MovieAPI.getAll().then((movies) => {
+        this.setState({ movies });
+      });
+    } else {
+      console.log(filteredList);
+      this.setState({ movies: filteredList });
+    }
+  };
+
   render = () => {
+    const myList = this.state.movies.filter((movie) => movie.my_list === true);
+
     return (
       <>
-        <header className="header">
-          <a href="/">
-            <img
-              src="https://fontmeme.com/permalink/190707/fd4735271a0d997cbe19a04408c896fc.png"
-              alt="netflix-font"
-              border="0"
-            />
-          </a>
-          <div id="navigation" className="navigation">
-            <nav>
-              <ul>
-                <li>
-                  <Switch>
-                    <Route exact path="./mylist">
-                      <Mylist />
-                      <Link to="/mylist">My List</Link>
-                    </Route>
-                  </Switch>
-                </li>
-              </ul>
-            </nav>
-          </div>
+        <Route>
+          <Header
+            value={this.state.searchField}
+            updateSearchField={this.updateSearchField}
+            results={this.state.searchField}
+          />
 
-          <Search />
-        </header>
-
-        <div className="titleList">
-          <div className="title">
-            <h1>Action</h1>
-            <div className="titles-wrapper">
-              {this.state.movies.map((movie) => (
-                <Movie
-                  movie={movie}
-                  key={movie.id}
-                  toggled={movie.my_list}
-                  toggleMyList={this.toggleMyList}
-                />
-              ))}
-            </div>
-          </div>
-        </div>
+          <Switch>
+            <Route exact path="/">
+              <div className="titleList">
+                <div className="title">
+                  <h1>Action</h1>
+                  <div className="titles-wrapper">
+                    {this.state.movies.map((movie) => (
+                      <Movie
+                        movie={movie}
+                        key={movie.id}
+                        toggled={movie.my_list}
+                        toggleMyList={this.toggleMyList}
+                      />
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </Route>
+            <Route exact path="/mylist">
+              <div className="titleList">
+                <div className="title">
+                  <h1>My List</h1>
+                  <div className="titles-wrapper">
+                    {myList.map((movie) => (
+                      <Movie
+                        movie={movie}
+                        key={movie.id}
+                        toggled={movie.my_list}
+                        toggleMyList={this.toggleMyList}
+                      />
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </Route>
+          </Switch>
+        </Route>
       </>
     );
   };

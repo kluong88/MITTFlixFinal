@@ -3,7 +3,7 @@ import React from "react";
 export default function Movie(props) {
   return (
     <div className="movie">
-      <img src={props.movie.poster_path} />
+      <img src={props.movie.poster_path} alt="Movie Poster" />
       <div className="overlay">
         <div className="title">{props.movie.title}</div>
         <div className="rating">{props.movie.vote_average}/10</div>

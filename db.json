@@ -100,7 +100,7 @@
         878
       ],
       "id": 11,
-      "my_list": true,
+      "my_list": false,
       "overview": "Princess Leia is captured and held hostage by the evil Imperial forces in their effort to take over the galactic Empire. Venturesome Luke Skywalker and dashing captain Han Solo team together with the loveable robot duo R2-D2 and C-3PO to rescue the beautiful princess and restore peace and justice in the Empire.",
       "poster_path": "https://image.tmdb.org/t/p/w500/6FfCtAuVAW8XJjZ7eWeLibRLWTw.jpg",
       "title": "Star Wars",
@@ -186,7 +186,7 @@
         53
       ],
       "id": 155,
-      "my_list": false,
+      "my_list": true,
       "overview": "Batman raises the stakes in his war on crime. With the help of Lt. Jim Gordon and District Attorney Harvey Dent, Batman sets out to dismantle the remaining criminal organizations that plague the streets. The partnership proves to be effective, but they soon find themselves prey to a reign of chaos unleashed by a rising criminal mastermind known to the terrified citizens of Gotham as the Joker.",
       "poster_path": "https://image.tmdb.org/t/p/w500/qJ2tW6WMUDux911r6m7haRef0WH.jpg",
       "title": "The Dark Knight",
@@ -369,7 +369,7 @@
         878
       ],
       "id": 271110,
-      "my_list": false,
+      "my_list": true,
       "overview": "Following the events of Age of Ultron, the collective governments of the world pass an act designed to regulate all superhuman activity. This polarizes opinion amongst the Avengers, causing two factions to side with Iron Man or Captain America, which causes an epic battle between former allies.",
       "poster_path": "https://image.tmdb.org/t/p/w500/8xA9XQ6KfvXFKcNLNRWSPT39Gaz.jpg",
       "title": "Captain America: Civil War",
@@ -440,7 +440,7 @@
         14
       ],
       "id": 297762,
-      "my_list": false,
+      "my_list": true,
       "overview": "An Amazon princess comes to the world of Man in the grips of the First World War to confront the forces of evil and bring an end to human conflict.",
       "poster_path": "https://image.tmdb.org/t/p/w500/gfJGlDaHuWimErCr5Ql0I8x9QSy.jpg",
       "title": "Wonder Woman",
@@ -468,7 +468,7 @@
         878
       ],
       "id": 299534,
-      "my_list": false,
+      "my_list": true,
       "overview": "After the devastating events of Avengers: Infinity War, the universe is in ruins due to the efforts of the Mad Titan, Thanos. With the help of remaining allies, the Avengers must assemble once more in order to undo Thanos' actions and restore order to the universe once and for all, no matter what consequences may be in store.",
       "poster_path": "https://image.tmdb.org/t/p/w500/or06FN3Dka5tukK1e9sl16pB3iy.jpg",
       "title": "Avengers: Endgame",
@@ -482,7 +482,7 @@
         878
       ],
       "id": 299536,
-      "my_list": false,
+      "my_list": true,
       "overview": "As the Avengers and their allies have continued to protect the world from threats too large for any one hero to handle, a new danger has emerged from the cosmic shadows: Thanos. A despot of intergalactic infamy, his goal is to collect all six Infinity Stones, artifacts of unimaginable power, and use them to inflict his twisted will on all of reality. Everything the Avengers have fought for has led up to this moment - the fate of Earth and existence itself has never been more uncertain.",
       "poster_path": "https://image.tmdb.org/t/p/w500/7WsyChQLEftFiDOVTGkv3hFpyyt.jpg",
       "title": "Avengers: Infinity War",
@@ -1340,7 +1340,7 @@
         878
       ],
       "id": 618344,
-      "my_list": false,
+      "my_list": true,
       "overview": "Earth is decimated after intergalactic tyrant Darkseid has devastated the Justice League in a poorly executed war by the DC Super Heroes. Now the remaining bastions of good – the Justice League, Teen Titans, Suicide Squad and assorted others – must regroup, strategize and take the war to Darkseid in order to save the planet and its surviving inhabitants.",
       "poster_path": "https://image.tmdb.org/t/p/w500/c01Y4suApJ1Wic2xLmaq1QYcfoZ.jpg",
       "title": "Justice League Dark: Apokolips War",
